@@ -1,6 +1,14 @@
+require 'json'
+
 class Ptse
-  # Header ( PTSE identity and order, PTSE aging )
-  # Sender information ( Sender identity, Sender routing capability, eligibility and PGL priority )
-  # Topology information ( Link ( horizontal/vertical ) and node parameters: attributes and metrics )
-  # Reachability info ( internal and external addresses to which the node will route traffic )
+  attr_accessor :sender, :nodes
+
+  def initialize(sender, nodes)
+  	@sender = sender
+  	@nodes = nodes
+  end
+
+  def info
+  	"#{JSON.pretty_generate(@sender)} \nhas #{nodes.size} nodes"
+  end
 end
